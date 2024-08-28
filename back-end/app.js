@@ -17,6 +17,10 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+app.use(cors({
+  origin: 'http://localhost:5503' // Adjust this to your frontend origin
+}));
+
 app.use(cookieParser(process.env.TOKEN_KEY));
 
 var jsonParser = bodyParser.json();

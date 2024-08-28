@@ -13,6 +13,7 @@
             <tr>
                 <th>ID</th>
                 <th>Email</th>
+                <th>Username</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,8 +24,8 @@
 
     <script>
         async function loadUsers() {
-            const response = await fetch('http://127.0.0.1:4001/admin/user',{
-                credentials:"include"
+            const response = await fetch('http://localhost:4001/admin/user', {
+                credentials: "include"
             });
             const users = (await response.json())?.payload;
             if (!users) {
@@ -38,13 +39,16 @@
                 const row = tbody.insertRow();
                 row.insertCell(0).innerText = user.id;
                 row.insertCell(1).innerText = user.email;
-                const actionsCell = row.insertCell(2);
+                row.insertCell(2).innerText = user.username;
+                const actionsCell = row.insertCell(3);
+
                 const editButton = document.createElement('button');
                 editButton.innerText = 'Edit';
                 editButton.onclick = () => {
                     window.location.href = `./user.html?user_id=${user.id}`;
                 };
                 actionsCell.appendChild(editButton);
+
             });
         }
 

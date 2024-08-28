@@ -29,7 +29,7 @@
 
     <script>
         async function loadUser(userId) {
-            const response = await fetch(`http://127.0.0.1:4001/admin/user/id/${userId}`,{
+            const response = await fetch(`http://localhost:4001/admin/user/id/${userId}`,{
                 credentials:"include"
             });
             const user = (await response.json())?.payload;
@@ -52,7 +52,7 @@
             const email = document.getElementById('email').value;
             const contact_number = document.getElementById('contact_number').value;
             const account_type = document.getElementById('account_type').value;
-            const response = await fetch(`http://127.0.0.1:4001/admin/user/id/${userId}`, {
+            const response = await fetch(`http://localhost:4001/admin/user/id/${userId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, email, contact_number, account_type }),
